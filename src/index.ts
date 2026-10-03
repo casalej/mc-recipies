@@ -1,23 +1,25 @@
-import axios from "axios"
+import dotenv from "dotenv"
+import * as MC from "./mc_api.js"
+dotenv.config()
 
-export interface Recipe 	{ 
-  id: string,
-  name: string, 
-  recipes: number
-}
+const items = [
+  'acacia_boat',
+  'acacia_button',
+  'acacia_chest_boat',
+  'acacia_door',
+  'acacia_fence',
+  'acacia_fence_gate',
+  'acacia_hanging_sign',
+  'acacia_planks',
+  'car',
+  'acacia_pressure_plate',
+  'acacia_shelf',
+  'acacia_sign',
+  'acacia_slab',
+  'acacia_stairs',
+  'acacia_trapdoor',
+  'acacia_wood',
+  'activator_rail'
+]
 
-const getItems = async():Promise<Array<Recipe>>=>{
-  const path = `https://mc-api.bisai.dev/v1/recipes`
-  const response = await axios.get(path)
-  const result: Array<Recipe> = response.data.items
-  return result
-}
-
-
-const  test = async ()=>{
-  const recipes = await getItems()
-  return recipes.map((r)=>r.id)
-
-}
-
-console.log(await test())
+console.log(await MC.getRecepies(items))

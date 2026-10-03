@@ -2,3 +2,5 @@
 /package-lock.json
 /.env
 /dist
+
+/src/assets/img/items
